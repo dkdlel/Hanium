@@ -1,0 +1,29 @@
+프로그램 자체에서 블루투스 연결을 구현 하는가 ?
+
+샘플에서는 라이브러리가 스레드에게 메세지만 던져주는데 그 메세지에 해당하는 작업은 ?
+
+FindFirst FindNext 이런 구조로 되어 있는 이유
+
+BluetoothSelectDevices 사용방법 (메세지 창이 뜬다고 하는데 우리 설정을 반영을 하는지)
+
+
+137	while (BluetoothFindNextDevice(m_bt_dev, &S_device_info)); 무한ㄹ루 프 찾을때 까지
+139	while (BluetoothFindNextRadio(&m_bt_find_radio, &m_radio));
+의미는 ?
+
+
+if(연결된 것 확인만 해서 구현이 가능한 경우)
+	연결된 것들 열거하는 방법
+	api에 열거라고 된 것들(Find)은 true / false를 반환
+
+	각 접근방법 (비교를 위해)
+else
+	샘플링 변형
+
+
+아무 키보드 입력시 모니터링에 대해
+
+
+alt + tab, ctrl + alt + delete 같은 입력 대처방법
+
+ERROR_SUCCESS 코드?

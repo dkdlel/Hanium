@@ -1,0 +1,108 @@
+라이브러리 = 함수 모아놓은 것
+
+
+
+*중복정의를 피하기 위한 코드
+
+#ifndef lib	=>lib를 define하지 않았다면 endif전까지 포함시켜라
+#define lib
+#endif
+	
+
+
+
+
+	라이브러리 생성과정
+
+
+1) 정적라이브러리로 프로젝트 생성
+
+2) .h파일 생성 (여기서는 함수 프로토타입)
+
+3) .cpp파일 생성 (여기서는 함수 구현)
+
+4) 빌드
+
+
+	프로젝트에서 적용
+
+
+1) 프로젝트의 속성
+
+2) C/C++ 일반에서 추가 포함 디렉터리 라이브러리 위치
+
+3) 링커 일반에서 추가 포함 디렉터리 라이브러리 위치
+
+4) 링커 입력에서 추가 종속성에 라이브러리 이름 입력
+
+
+
+*디버깅 모드에서 설정했더라도 릴리즈 모드에서 다시 설정 해야한다.
+
+pch나 stdafx에서 미리 헤더를 include 해놓으면
+main에서는 pch.h나 stdafx.h만 선언해도 다 된다.
+=> 미리 컴파일해놓는 거라 속도가 빨라짐
+
+
+msvcrt' defaultlib가 다른 라이브러리와 충돌합니다
+=> 솔루션 속성 링커 입력에서 특정 기본라이브러리 무시 msvcrt.lib추가 => 상관없는가 => 상관없음
+이유: 릴리즈모드로 만든 라이브러리를 디버그모드인 프로젝트에서 쓰거나
+      디버그모드로 만든 라이브러리를 릴리즈모드인 프로젝트에서 써서
+
+
+
+
+
+	동적 라이브러리
+
+
+https://copynull.tistory.com/25
+
+extern "C" => 네임 맹글링 방지
+		컴파일러 종류에 따라 이름을 바꾸는데
+		그러다가 함수를 인식하지 못하는 경우가 생김
+
+
+__declspect(dllexport) => dll에서 쓰는 함수라고 명시
+				함수명 앞에 이게 붙으면 dll에서만 쓰는 함수다 라고 봄
+
+
+#pragma comment(lib, "dll이름.lib") => dll파일 포함시키는 명령어
+
+exe파일이 있는 폴더 안에 dll파일 필요
+
+
+
+
+	정적 동적 차이
+
+
+http://jinyongjeong.github.io/2016/06/05/DLL_and_LIB/
+
+
+
+lib는 exe에 포함된다 => exe가 무거워지는 대신 실행이 빠르다
+	변경사항이 생기면 새로운 lib와 빌드를 해서 나온 exe를 배포
+	사용자가 좋아함(빠르니까)
+
+dll은 exe가 참조한다 => exe가 가벼워지는 대신 실행이 느리다
+	변경사항이 생기면 dll파일만 배포
+	개발자가 좋아함(편하니까)
+
+
+
+
+
+
+
+
+
+
+(블루투스)
+https://gist.github.com/muabe/68ff7c1c41b07c698c4d
+
+(MFC)
+https://blog.naver.com/tipsware/221307415937
+
+(블루투스 샘플)
+https://github.com/microsoft/Windows-classic-samples/blob/master/Samples/WinsockBluetoothConnection/cpp/bthcxn.cpp

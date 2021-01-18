@@ -1,0 +1,17 @@
+19.09.22 고려 할 사항
+
+//1. Topmoset window(z-order) - setwindowpos(_) => 띄우는 창을 최상위로
+
+2. fconnected :  1번
+- 계속 2초씩 확인하지 말고 지속여부(상태가 바뀌고 나서 5초정도 이상 지속이 되는가)보기
+=> 일시적으로 연결 불안일 수도 있기때문
+
+//3. 상태 해결(unlock)되면 띄웠던 창 해제(hide) or close 해주기 기능
+
+4. 창 가운데 정렬 movewindow, setwindowpos 전체길이에서 얼마나 차지하는지 계산해서 정렬
+시간 되면 Lockgif를 뿌릴 수 있는 library이용
+getsystemmatrics? getsystemmatrix? api 이용해서 전체 크기 구할 수 있음
+
+//5. 지원비 관련 실습장비 생각해보기
+
+위 사항들 중간고사 전까지 개발 해야됨
